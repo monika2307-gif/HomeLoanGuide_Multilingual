@@ -1,5 +1,7 @@
 # 🏦 Multilingual LoanGuide AI
 
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/deploy?repository=monika2307-gif/HomeLoanGuide_Multilingual&branch=main&mainModule=app.py)
+
 An intelligent, multi-turn, multilingual Retrieval-Augmented Generation (RAG) assistant for Home Loans, Housing Finance, and Banking Regulations in India. Built with **LangChain**, **FAISS**, **Hugging Face**, and **Streamlit**.
 
 Supports queries in:
