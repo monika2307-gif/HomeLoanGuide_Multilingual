@@ -109,6 +109,12 @@ with st.sidebar:
     # 1. Hugging Face API Configuration
     st.markdown("#### 🔑 Hugging Face API Token")
     env_token = os.environ.get("HUGGINGFACEHUB_API_TOKEN", "")
+    if not env_token:
+        try:
+            if "HUGGINGFACEHUB_API_TOKEN" in st.secrets:
+                env_token = st.secrets["HUGGINGFACEHUB_API_TOKEN"]
+        except Exception:
+            pass
     hf_token = st.text_input(
         "HF Hub Token",
         value=env_token,

@@ -923,9 +923,17 @@ def get_chat_model(
 ) -> ChatHuggingFace:
     token = api_token or os.environ.get("HUGGINGFACEHUB_API_TOKEN", "")
     if not token:
+        try:
+            import streamlit as st
+            if "HUGGINGFACEHUB_API_TOKEN" in st.secrets:
+                token = st.secrets["HUGGINGFACEHUB_API_TOKEN"]
+        except Exception:
+            pass
+
+    if not token:
         raise ValueError(
             "Hugging Face API Token is required. Please set HUGGINGFACEHUB_API_TOKEN "
-            "in your .env file or enter it in the Streamlit sidebar."
+            "in your .env file, Streamlit secrets, or enter it in the Streamlit sidebar."
         )
 
     llm = HuggingFaceEndpoint(
